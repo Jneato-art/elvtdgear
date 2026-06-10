@@ -143,9 +143,9 @@
   .section-head p { max-width:340px; color:var(--text-dim); font-size:14px; line-height:1.7; }
 
   /* ---------- COLLECTION ---------- */
-  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,2vw,28px); }
+  .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(16px,2vw,28px); }
   .card { position:relative; border-radius:18px; overflow:hidden; background:var(--bg-card); border:1px solid var(--line); cursor:pointer; }
-  .card-img { aspect-ratio:4/5; overflow:hidden; }
+  .card-img { aspect-ratio:1/1; overflow:hidden; }
   .card-img img { transition:transform .8s cubic-bezier(.2,.8,.2,1); }
   .card:hover .card-img img { transform:scale(1.05); }
   .card-tag {
@@ -180,6 +180,8 @@
   .look.b { grid-column:span 5; aspect-ratio:auto; }
   .look.c { grid-column:span 5; aspect-ratio:auto; }
   .look.d { grid-column:span 7; aspect-ratio:16/10; }
+  .look.e { grid-column:span 7; aspect-ratio:16/10; }
+  .look.f { grid-column:span 5; aspect-ratio:auto; }
 
   /* ---------- SIGNUP ---------- */
   .signup { text-align:center; border-top:1px solid var(--line); }
@@ -218,8 +220,9 @@
   @media (max-width: 900px) {
     .grid { grid-template-columns:1fr 1fr; }
     .story { grid-template-columns:1fr; }
-    .look.a,.look.b,.look.c,.look.d { grid-column:span 12; aspect-ratio:4/5; }
-    .look.a,.look.d { aspect-ratio:16/11; }
+    .look.a,.look.b,.look.c,.look.d,.look.e,.look.f { grid-column:span 12; aspect-ratio:4/5; }
+    .look.a,.look.d,.look.e { aspect-ratio:16/11; }
+    .grid { grid-template-columns:1fr 1fr; }
   }
   @media (max-width: 640px) {
     .nav-links {
@@ -265,7 +268,7 @@
 
 <!-- HERO -->
 <header class="hero" id="top">
-  <div class="hero-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EbjGm4qJSiV1t96YH9yJhkVhMv/hf_20260610_211337_9719e2e7-f68f-4bec-9c2e-ddda78f490dc_min.webp" alt="Athlete training in ELVTD cap" id="heroImg" /></div>
+  <div class="hero-img"><img src="assets/hero.jpg" style="object-position:50% 22%;" alt="ELVTD tee and cap at night" id="heroImg" /></div>
   <div class="hero-content">
     <div class="hero-eyebrow reveal visible">Premium Athletic Wear</div>
     <h1 class="reveal visible">Built<br/><span class="thin">For</span> More</h1>
@@ -299,7 +302,7 @@
   </div>
   <div class="grid">
     <div class="card reveal">
-      <div class="card-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EbjGm4qJSiV1t96YH9yJhkVhMv/hf_20260610_211338_b4ece581-db27-43c3-9cbe-c98f6f26b5c0_min.webp" alt="ELVTD white performance cap" /></div>
+      <div class="card-img"><img src="assets/cap-white.jpg" alt="ELVTD white performance cap" /></div>
       <div class="card-tag">Drop 001</div>
       <div class="card-info">
         <div><h3>Performance Cap</h3><div class="meta">Cloud White</div></div>
@@ -307,7 +310,7 @@
       </div>
     </div>
     <div class="card reveal" data-delay="1">
-      <div class="card-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EbjGm4qJSiV1t96YH9yJhkVhMv/hf_20260610_211339_f33a65c5-6aca-43c7-9fd0-8239d662c578_min.webp" alt="ELVTD navy performance cap" /></div>
+      <div class="card-img"><img src="assets/cap-navy.jpg" alt="ELVTD navy performance cap" /></div>
       <div class="card-tag">Drop 001</div>
       <div class="card-info">
         <div><h3>Performance Cap</h3><div class="meta">Midnight Navy</div></div>
@@ -315,10 +318,18 @@
       </div>
     </div>
     <div class="card reveal" data-delay="2">
-      <div class="card-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EbjGm4qJSiV1t96YH9yJhkVhMv/hf_20260610_211340_22083c90-6d47-46d9-af73-1d684bb78cea_min.webp" alt="ELVTD black performance cap with red logo" /></div>
+      <div class="card-img"><img src="assets/cap-black-red.jpg" alt="ELVTD black performance cap with red logo" /></div>
       <div class="card-tag">Drop 001</div>
       <div class="card-info">
         <div><h3>Performance Cap</h3><div class="meta">Blackout / Red</div></div>
+        <div class="card-price">Coming Soon</div>
+      </div>
+    </div>
+    <div class="card reveal" data-delay="3">
+      <div class="card-img"><img src="assets/cap-black-white.jpg" alt="ELVTD black performance cap with white logo" /></div>
+      <div class="card-tag">Drop 001</div>
+      <div class="card-info">
+        <div><h3>Performance Cap</h3><div class="meta">Blackout / White</div></div>
         <div class="card-price">Coming Soon</div>
       </div>
     </div>
@@ -339,7 +350,7 @@
         <div class="stat"><div class="num">100%</div><div class="lbl">Standard</div></div>
       </div>
     </div>
-    <div class="story-img reveal" data-delay="1"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EbjGm4qJSiV1t96YH9yJhkVhMv/hf_20260610_211621_c2be966d-7359-4df1-b79f-099d9a5246b4_min.webp" alt="ELVTD lifestyle" /></div>
+    <div class="story-img reveal" data-delay="1"><img src="assets/tee-studio.jpg" alt="ELVTD Gear essential tee" /></div>
   </div>
 </section>
 
@@ -353,10 +364,12 @@
     <p class="reveal">From the squat rack to the street. Shot on the people who live it.</p>
   </div>
   <div class="look-grid">
-    <div class="look a reveal"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EbjGm4qJSiV1t96YH9yJhkVhMv/hf_20260610_211337_9719e2e7-f68f-4bec-9c2e-ddda78f490dc_min.webp" alt="ELVTD training" /></div>
-    <div class="look b reveal" data-delay="1"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EbjGm4qJSiV1t96YH9yJhkVhMv/hf_20260610_211339_f33a65c5-6aca-43c7-9fd0-8239d662c578_min.webp" alt="ELVTD on the track" /></div>
-    <div class="look c reveal"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EbjGm4qJSiV1t96YH9yJhkVhMv/hf_20260610_211340_22083c90-6d47-46d9-af73-1d684bb78cea_min.webp" alt="ELVTD coffee run" /></div>
-    <div class="look d reveal" data-delay="1"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EbjGm4qJSiV1t96YH9yJhkVhMv/hf_20260610_211621_c2be966d-7359-4df1-b79f-099d9a5246b4_min.webp" alt="ELVTD nights" /></div>
+    <div class="look a reveal"><img src="assets/look-ropes.jpg" alt="ELVTD training" /></div>
+    <div class="look b reveal" data-delay="1"><img src="assets/tee-back.jpg" alt="ELVTD Gear tee at night" /></div>
+    <div class="look c reveal"><img src="assets/look-coffee.jpg" alt="ELVTD coffee run" /></div>
+    <div class="look d reveal" data-delay="1"><img src="assets/look-marathon.jpg" alt="ELVTD race day" /></div>
+    <div class="look e reveal"><img src="assets/look-race.jpg" alt="ELVTD marathon" /></div>
+    <div class="look f reveal" data-delay="1"><img src="assets/look-gym.jpg" alt="ELVTD in the gym" /></div>
   </div>
 </section>
 
