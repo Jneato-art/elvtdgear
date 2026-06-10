@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ELVTD GEAR — Built For More</title>
+<meta name="description" content="ELVTD GEAR. Premium athletic wear. Casual performance wear. Designed for performance, built for life." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<style>
+  :root {
+    --bg: #0a0a0b;
+    --bg-soft: #111113;
+    --bg-card: #151517;
+    --line: rgba(255,255,255,.08);
+    --text: #f4f4f2;
+    --text-dim: rgba(244,244,242,.55);
+    --text-faint: rgba(244,244,242,.35);
+    --accent: #e8e4dc;
+    --display: 'Inter Tight', sans-serif;
+    --body: 'Inter', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--bg); color:var(--text);
+    font-family:var(--body); font-weight:300;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection { background:var(--accent); color:var(--bg); }
+  img { display:block; width:100%; height:100%; object-fit:cover; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px clamp(20px,5vw,64px);
+    transition:background .4s, padding .4s, border-color .4s;
+    border-bottom:1px solid transparent;
+  }
+  nav.scrolled {
+    background:rgba(10,10,11,.82);
+    backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+    padding:14px clamp(20px,5vw,64px);
+    border-bottom-color:var(--line);
+  }
+  .nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text); }
+  .nav-logo svg { width:30px; height:30px; }
+  .nav-logo span {
+    font-family:var(--display); font-weight:700; font-size:15px;
+    letter-spacing:.42em; text-indent:.42em;
+  }
+  .nav-links { display:flex; gap:38px; align-items:center; }
+  .nav-links a {
+    color:var(--text-dim); text-decoration:none; font-size:12px;
+    letter-spacing:.22em; text-transform:uppercase; font-weight:400;
+    transition:color .3s;
+  }
+  .nav-links a:hover { color:var(--text); }
+  .nav-cta {
+    border:1px solid var(--line); padding:10px 22px; border-radius:100px;
+    color:var(--text) !important; transition:background .3s, color .3s !important;
+  }
+  .nav-cta:hover { background:var(--accent); color:var(--bg) !important; }
+  .burger { display:none; background:none; border:none; cursor:pointer; z-index:110; }
+  .burger span { display:block; width:24px; height:1.5px; background:var(--text); margin:6px 0; transition:.35s; }
+
+  /* ---------- HERO ---------- */
+  .hero { position:relative; height:100svh; min-height:640px; display:flex; align-items:flex-end; overflow:hidden; }
+  .hero-img { position:absolute; inset:0; }
+  .hero-img img { transform:scale(1.08); }
+  .hero::after {
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(10,10,11,.35) 0%, rgba(10,10,11,.05) 40%, rgba(10,10,11,.92) 92%);
+  }
+  .hero-content {
+    position:relative; z-index:2; width:100%;
+    padding:0 clamp(20px,5vw,64px) clamp(48px,7vh,88px);
+  }
+  .hero-eyebrow {
+    display:flex; align-items:center; gap:14px;
+    font-size:11px; letter-spacing:.34em; text-transform:uppercase;
+    color:var(--text-dim); margin-bottom:22px;
+  }
+  .hero-eyebrow::before { content:''; width:42px; height:1px; background:var(--text-dim); }
+  h1 {
+    font-family:var(--display); font-weight:800;
+    font-size:clamp(52px, 11vw, 152px);
+    line-height:.92; letter-spacing:-.02em; text-transform:uppercase;
+  }
+  h1 .thin { font-weight:300; letter-spacing:.01em; }
+  .hero-row {
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap:32px; margin-top:34px; flex-wrap:wrap;
+  }
+  .hero-sub { max-width:380px; color:var(--text-dim); font-size:15px; line-height:1.7; }
+  .btn {
+    display:inline-flex; align-items:center; gap:12px;
+    font-family:var(--display); font-size:12px; font-weight:600;
+    letter-spacing:.24em; text-transform:uppercase; text-decoration:none;
+    color:var(--bg); background:var(--accent);
+    padding:18px 36px; border-radius:100px; border:none; cursor:pointer;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
+  }
+  .btn:hover { transform:translateY(-3px); box-shadow:0 16px 40px rgba(232,228,220,.18); }
+  .btn.ghost { background:transparent; color:var(--text); border:1px solid var(--line); }
+  .btn.ghost:hover { border-color:var(--text-dim); box-shadow:none; }
+  .hero-scroll {
+    position:absolute; right:clamp(20px,5vw,64px); bottom:clamp(48px,7vh,88px); z-index:2;
+    writing-mode:vertical-rl; font-size:10px; letter-spacing:.32em;
+    text-transform:uppercase; color:var(--text-faint);
+    display:flex; align-items:center; gap:12px;
+  }
+  .hero-scroll::after { content:''; width:1px; height:48px; background:var(--text-faint); animation:drip 2.2s ease-in-out infinite; }
+  @keyframes drip { 0%{transform:scaleY(0); transform-origin:top} 50%{transform:scaleY(1); transform-origin:top} 51%{transform-origin:bottom} 100%{transform:scaleY(0); transform-origin:bottom} }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee { border-block:1px solid var(--line); padding:20px 0; overflow:hidden; background:var(--bg-soft); }
+  .marquee-track { display:flex; gap:0; width:max-content; animation:scroll 28s linear infinite; }
+  .marquee span {
+    font-family:var(--display); font-weight:700; font-size:14px;
+    letter-spacing:.34em; text-transform:uppercase; white-space:nowrap;
+    color:var(--text-faint); padding:0 28px; display:flex; align-items:center; gap:56px;
+  }
+  .marquee span::after { content:'◦'; color:var(--text-faint); }
+  @keyframes scroll { to { transform:translateX(-50%); } }
+
+  /* ---------- SECTIONS ---------- */
+  section { padding:clamp(80px,12vh,140px) clamp(20px,5vw,64px); }
+  .section-head { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:clamp(40px,6vh,64px); flex-wrap:wrap; }
+  .kicker {
+    font-size:11px; letter-spacing:.34em; text-transform:uppercase;
+    color:var(--text-dim); display:flex; align-items:center; gap:14px; margin-bottom:18px;
+  }
+  .kicker::before { content:''; width:42px; height:1px; background:var(--text-dim); }
+  h2 {
+    font-family:var(--display); font-weight:800; text-transform:uppercase;
+    font-size:clamp(34px,5.5vw,64px); line-height:1; letter-spacing:-.015em;
+  }
+  .section-head p { max-width:340px; color:var(--text-dim); font-size:14px; line-height:1.7; }
+
+  /* ---------- COLLECTION ---------- */
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,2vw,28px); }
+  .card { position:relative; border-radius:18px; overflow:hidden; background:var(--bg-card); border:1px solid var(--line); cursor:pointer; }
+  .card-img { aspect-ratio:4/5; overflow:hidden; }
+  .card-img img { transition:transform .8s cubic-bezier(.2,.8,.2,1); }
+  .card:hover .card-img img { transform:scale(1.05); }
+  .card-tag {
+    position:absolute; top:18px; left:18px;
+    font-size:10px; letter-spacing:.26em; text-transform:uppercase;
+    background:rgba(10,10,11,.65); backdrop-filter:blur(8px);
+    padding:8px 14px; border-radius:100px; border:1px solid var(--line);
+  }
+  .card-info {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:20px 22px;
+  }
+  .card-info h3 { font-family:var(--display); font-weight:600; font-size:16px; letter-spacing:.04em; }
+  .card-info .meta { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--text-dim); margin-top:5px; }
+  .card-price { font-family:var(--display); font-weight:500; font-size:14px; color:var(--text-dim); }
+
+  /* ---------- STORY ---------- */
+  .story { display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(32px,5vw,80px); align-items:center; }
+  .story-img { border-radius:20px; overflow:hidden; aspect-ratio:4/5; border:1px solid var(--line); }
+  .story h2 { margin-bottom:28px; }
+  .story p { color:var(--text-dim); font-size:16px; line-height:1.85; max-width:480px; margin-bottom:18px; }
+  .story-stats { display:flex; gap:clamp(28px,4vw,56px); margin-top:40px; flex-wrap:wrap; }
+  .stat .num { font-family:var(--display); font-weight:800; font-size:clamp(30px,3.5vw,44px); }
+  .stat .lbl { font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--text-faint); margin-top:6px; }
+
+  /* ---------- LOOKBOOK ---------- */
+  .look-grid { display:grid; grid-template-columns:repeat(12,1fr); gap:clamp(14px,1.6vw,22px); }
+  .look { border-radius:18px; overflow:hidden; border:1px solid var(--line); position:relative; }
+  .look img { transition:transform .9s cubic-bezier(.2,.8,.2,1); }
+  .look:hover img { transform:scale(1.06); }
+  .look.a { grid-column:span 7; aspect-ratio:16/10; }
+  .look.b { grid-column:span 5; aspect-ratio:auto; }
+  .look.c { grid-column:span 5; aspect-ratio:auto; }
+  .look.d { grid-column:span 7; aspect-ratio:16/10; }
+
+  /* ---------- SIGNUP ---------- */
+  .signup { text-align:center; border-top:1px solid var(--line); }
+  .signup .logo-mark { width:54px; height:54px; margin:0 auto 30px; opacity:.9; }
+  .signup h2 { font-size:clamp(38px,6vw,76px); }
+  .signup p { color:var(--text-dim); max-width:420px; margin:22px auto 40px; font-size:15px; line-height:1.75; }
+  .signup-form { display:flex; gap:10px; max-width:480px; margin:0 auto; }
+  .signup-form input {
+    flex:1; background:var(--bg-card); border:1px solid var(--line);
+    border-radius:100px; padding:18px 26px; color:var(--text);
+    font-family:var(--body); font-size:14px; outline:none; transition:border-color .3s;
+  }
+  .signup-form input:focus { border-color:rgba(244,244,242,.35); }
+  .signup-form input::placeholder { color:var(--text-faint); }
+  .signup-success { display:none; font-family:var(--display); letter-spacing:.18em; text-transform:uppercase; font-size:13px; color:var(--accent); margin-top:8px; }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    border-top:1px solid var(--line);
+    padding:48px clamp(20px,5vw,64px);
+    display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;
+  }
+  .foot-logo { display:flex; align-items:center; gap:10px; }
+  .foot-logo svg { width:22px; height:22px; opacity:.7; }
+  .foot-logo span { font-family:var(--display); font-weight:700; font-size:12px; letter-spacing:.4em; color:var(--text-dim); }
+  footer .tagline, footer .copy { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--text-faint); }
+
+  /* ---------- REVEAL ---------- */
+  .reveal { opacity:0; transform:translateY(34px); transition:opacity .9s ease, transform .9s cubic-bezier(.2,.8,.2,1); }
+  .reveal.visible { opacity:1; transform:none; }
+  .reveal[data-delay="1"] { transition-delay:.12s; }
+  .reveal[data-delay="2"] { transition-delay:.24s; }
+  .reveal[data-delay="3"] { transition-delay:.36s; }
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width: 900px) {
+    .grid { grid-template-columns:1fr 1fr; }
+    .story { grid-template-columns:1fr; }
+    .look.a,.look.b,.look.c,.look.d { grid-column:span 12; aspect-ratio:4/5; }
+    .look.a,.look.d { aspect-ratio:16/11; }
+  }
+  @media (max-width: 640px) {
+    .nav-links {
+      position:fixed; inset:0; background:rgba(10,10,11,.97);
+      backdrop-filter:blur(20px);
+      flex-direction:column; justify-content:center; gap:34px;
+      opacity:0; pointer-events:none; transition:opacity .4s;
+    }
+    .nav-links.open { opacity:1; pointer-events:auto; }
+    .nav-links a { font-size:16px; }
+    .burger { display:block; }
+    .burger.open span:nth-child(1){ transform:translateY(7.5px) rotate(45deg); }
+    .burger.open span:nth-child(2){ opacity:0; }
+    .burger.open span:nth-child(3){ transform:translateY(-7.5px) rotate(-45deg); }
+    .grid { grid-template-columns:1fr; }
+    .signup-form { flex-direction:column; }
+    .signup-form .btn { justify-content:center; }
+    .hero-scroll { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#top" aria-label="ELVTD home">
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="24" r="20.5" stroke="currentColor" stroke-width="4"/>
+      <rect x="15" y="15.5" width="18" height="4" fill="currentColor"/>
+      <rect x="15" y="22" width="18" height="4" fill="currentColor"/>
+      <rect x="15" y="28.5" width="18" height="4" fill="currentColor"/>
+    </svg>
+    <span>ELVTD</span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#collection">Collection</a>
+    <a href="#story">Brand</a>
+    <a href="#lookbook">Lookbook</a>
+    <a href="#notify" class="nav-cta">Get Notified</a>
+  </div>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EbjGm4qJSiV1t96YH9yJhkVhMv/hf_20260610_211337_9719e2e7-f68f-4bec-9c2e-ddda78f490dc_min.webp" alt="Athlete training in ELVTD cap" id="heroImg" /></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow reveal visible">Premium Athletic Wear</div>
+    <h1 class="reveal visible">Built<br/><span class="thin">For</span> More</h1>
+    <div class="hero-row reveal visible" data-delay="1">
+      <p class="hero-sub">Casual performance wear engineered for the gym, the street, and everything in between. No noise. Just standards.</p>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a class="btn" href="#collection">View Collection</a>
+        <a class="btn ghost" href="#notify">First Drop Access</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Elvtd Gear</span><span>Built For More</span><span>Designed For Performance</span><span>Built For Life</span>
+    <span>Elvtd Gear</span><span>Built For More</span><span>Designed For Performance</span><span>Built For Life</span>
+  </div>
+</div>
+
+<!-- COLLECTION -->
+<section id="collection">
+  <div class="section-head">
+    <div>
+      <div class="kicker reveal">Drop 001</div>
+      <h2 class="reveal">The Collection</h2>
+    </div>
+    <p class="reveal">Structured five-panel caps and heavyweight essentials. Minimal branding, maximum build quality.</p>
+  </div>
+  <div class="grid">
+    <div class="card reveal">
+      <div class="card-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EbjGm4qJSiV1t96YH9yJhkVhMv/hf_20260610_211338_b4ece581-db27-43c3-9cbe-c98f6f26b5c0_min.webp" alt="ELVTD white performance cap" /></div>
+      <div class="card-tag">Drop 001</div>
+      <div class="card-info">
+        <div><h3>Performance Cap</h3><div class="meta">Cloud White</div></div>
+        <div class="card-price">Coming Soon</div>
+      </div>
+    </div>
+    <div class="card reveal" data-delay="1">
+      <div class="card-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EbjGm4qJSiV1t96YH9yJhkVhMv/hf_20260610_211339_f33a65c5-6aca-43c7-9fd0-8239d662c578_min.webp" alt="ELVTD navy performance cap" /></div>
+      <div class="card-tag">Drop 001</div>
+      <div class="card-info">
+        <div><h3>Performance Cap</h3><div class="meta">Midnight Navy</div></div>
+        <div class="card-price">Coming Soon</div>
+      </div>
+    </div>
+    <div class="card reveal" data-delay="2">
+      <div class="card-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EbjGm4qJSiV1t96YH9yJhkVhMv/hf_20260610_211340_22083c90-6d47-46d9-af73-1d684bb78cea_min.webp" alt="ELVTD black performance cap with red logo" /></div>
+      <div class="card-tag">Drop 001</div>
+      <div class="card-info">
+        <div><h3>Performance Cap</h3><div class="meta">Blackout / Red</div></div>
+        <div class="card-price">Coming Soon</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story" style="background:var(--bg-soft); border-block:1px solid var(--line);">
+  <div class="story">
+    <div>
+      <div class="kicker reveal">The Brand</div>
+      <h2 class="reveal">Designed for performance.<br/>Built for life.</h2>
+      <p class="reveal" data-delay="1" style="margin-top:28px;">ELVTD exists for the ones who show up — at the gym before sunrise, at the start line in the rain, at the café after the work is done.</p>
+      <p class="reveal" data-delay="1">Every piece is cut to move and built to last. One logo. Three bars. A standard you wear, not a statement you shout.</p>
+      <div class="story-stats reveal" data-delay="2">
+        <div class="stat"><div class="num">01</div><div class="lbl">First Drop</div></div>
+        <div class="stat"><div class="num">3</div><div class="lbl">Colorways</div></div>
+        <div class="stat"><div class="num">100%</div><div class="lbl">Standard</div></div>
+      </div>
+    </div>
+    <div class="story-img reveal" data-delay="1"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EbjGm4qJSiV1t96YH9yJhkVhMv/hf_20260610_211621_c2be966d-7359-4df1-b79f-099d9a5246b4_min.webp" alt="ELVTD lifestyle" /></div>
+  </div>
+</section>
+
+<!-- LOOKBOOK -->
+<section id="lookbook">
+  <div class="section-head">
+    <div>
+      <div class="kicker reveal">In The Wild</div>
+      <h2 class="reveal">Lookbook</h2>
+    </div>
+    <p class="reveal">From the squat rack to the street. Shot on the people who live it.</p>
+  </div>
+  <div class="look-grid">
+    <div class="look a reveal"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EbjGm4qJSiV1t96YH9yJhkVhMv/hf_20260610_211337_9719e2e7-f68f-4bec-9c2e-ddda78f490dc_min.webp" alt="ELVTD training" /></div>
+    <div class="look b reveal" data-delay="1"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EbjGm4qJSiV1t96YH9yJhkVhMv/hf_20260610_211339_f33a65c5-6aca-43c7-9fd0-8239d662c578_min.webp" alt="ELVTD on the track" /></div>
+    <div class="look c reveal"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EbjGm4qJSiV1t96YH9yJhkVhMv/hf_20260610_211340_22083c90-6d47-46d9-af73-1d684bb78cea_min.webp" alt="ELVTD coffee run" /></div>
+    <div class="look d reveal" data-delay="1"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EbjGm4qJSiV1t96YH9yJhkVhMv/hf_20260610_211621_c2be966d-7359-4df1-b79f-099d9a5246b4_min.webp" alt="ELVTD nights" /></div>
+  </div>
+</section>
+
+<!-- SIGNUP -->
+<section class="signup" id="notify">
+  <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="24" cy="24" r="20.5" stroke="#f4f4f2" stroke-width="4"/>
+    <rect x="15" y="15.5" width="18" height="4" fill="#f4f4f2"/>
+    <rect x="15" y="22" width="18" height="4" fill="#f4f4f2"/>
+    <rect x="15" y="28.5" width="18" height="4" fill="#f4f4f2"/>
+  </svg>
+  <h2 class="reveal">Don't miss the drop</h2>
+  <p class="reveal" data-delay="1">Drop 001 is limited. Join the list for early access, sizing, and release dates — nothing else, ever.</p>
+  <form class="signup-form reveal" data-delay="2" id="notifyForm">
+    <input type="email" placeholder="your@email.com" required id="emailInput" />
+    <button class="btn" type="submit">Notify Me</button>
+  </form>
+  <div class="signup-success" id="successMsg">✓ You're on the list. Stay ready.</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="24" r="20.5" stroke="currentColor" stroke-width="4"/>
+      <rect x="15" y="15.5" width="18" height="4" fill="currentColor"/>
+      <rect x="15" y="22" width="18" height="4" fill="currentColor"/>
+      <rect x="15" y="28.5" width="18" height="4" fill="currentColor"/>
+    </svg>
+    <span>ELVTD GEAR</span>
+  </div>
+  <div class="tagline">Built For More</div>
+  <div class="copy">© 2026 ELVTD GEAR — elvtdgear.com</div>
+</footer>
+
+<script>
+  // Nav scroll state
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40), {passive:true});
+
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const links = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('open'); links.classList.remove('open');
+  }));
+
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: .15 });
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => io.observe(el));
+
+  // Subtle hero parallax
+  const heroImg = document.getElementById('heroImg');
+  addEventListener('scroll', () => {
+    const y = scrollY;
+    if (y < innerHeight) heroImg.style.transform = `scale(1.08) translateY(${y * .12}px)`;
+  }, {passive:true});
+
+  // Email capture (front-end only — hook up to Mailchimp/Klaviyo/Formspree later)
+  const form = document.getElementById('notifyForm');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    form.style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  });
+</script>
+</body>
+</html>
