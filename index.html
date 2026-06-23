@@ -95,7 +95,7 @@
   /* ---------- HERO ---------- */
   .hero { position:relative; min-height:calc(100svh - 100px); display:flex; align-items:flex-end; overflow:hidden; }
   .hero-img { position:absolute; inset:0; }
-  .hero-img img { transform:scale(1.06); object-position:50% 30%; }
+  .hero-img img { transform:scale(1.06); object-position:50% 16%; }
   .hero::after { content:''; position:absolute; inset:0;
     background:linear-gradient(180deg, rgba(10,10,11,.55) 0%, rgba(10,10,11,.12) 38%, rgba(10,10,11,.55) 72%, rgba(10,10,11,.96) 100%); }
   .hero-content { position:relative; z-index:2; width:100%; padding:0 clamp(20px,5vw,56px) clamp(44px,7vh,80px); }
@@ -168,14 +168,10 @@
   .pillar p { color:var(--text-dim); font-size:14px; line-height:1.7; }
 
   /* ---------- LOOKBOOK ---------- */
-  .look-grid { display:grid; grid-template-columns:repeat(12,1fr); gap:clamp(12px,1.5vw,20px); }
-  .look { border-radius:var(--r); overflow:hidden; border:1px solid var(--line); }
+  .look-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(12px,1.5vw,20px); }
+  .look { border-radius:var(--r); overflow:hidden; border:1px solid var(--line); aspect-ratio:3/4; }
   .look img { transition:transform .9s cubic-bezier(.2,.8,.2,1); }
   .look:hover img { transform:scale(1.06); }
-  .look.tall { grid-column:span 4; aspect-ratio:3/4; }
-  .look.wide { grid-column:span 8; aspect-ratio:16/11; }
-  .look.half { grid-column:span 6; aspect-ratio:3/2; }
-  .look.third { grid-column:span 4; aspect-ratio:3/4; }
 
   /* ---------- APPAREL TEASER ---------- */
   .apparel { display:grid; grid-template-columns:1fr 1fr; gap:clamp(12px,1.5vw,20px); }
@@ -264,8 +260,7 @@
   @media (max-width:760px){
     .pillars { grid-template-columns:1fr; }
     .apparel { grid-template-columns:1fr; }
-    .look.tall,.look.wide,.look.half,.look.third { grid-column:span 12; aspect-ratio:3/4; }
-    .look.wide,.look.half { aspect-ratio:16/11; }
+    .look-grid { grid-template-columns:1fr 1fr; }
   }
   @media (max-width:640px){
     .nav-links { position:fixed; inset:0; background:rgba(10,10,11,.98); backdrop-filter:blur(20px); flex-direction:column; justify-content:center; gap:32px; opacity:0; pointer-events:none; transition:opacity .4s; }
@@ -305,7 +300,7 @@
 
 <!-- HERO -->
 <header class="hero" id="top">
-  <div class="hero-img"><img src="assets/hero.jpg" alt="Athlete in ELVTD GEAR olive tee and cap training" id="heroImg" /></div>
+  <div class="hero-img"><img src="assets/hero.jpg" alt="Man in white ELVTD GEAR tee and cap at night" id="heroImg" /></div>
   <div class="hero-content">
     <div class="eyebrow">Premium Athletic Wear · Drop 001</div>
     <h1>Built<br/><span class="thin">For</span> More</h1>
@@ -367,12 +362,12 @@
     <div>
       <div class="kicker reveal">The Signature Cap</div>
       <h2 class="reveal">Made to be<br/>worn everywhere.</h2>
-      <p class="feature-lead reveal" data-delay="1">One silhouette, dialed in. A structured mid-profile crown, a clean curved brim, and a raised embroidered mark that holds its shape from set one to set one thousand.</p>
+      <p class="feature-lead reveal" data-delay="1">One silhouette, dialed in. Cut from premium brushed polyester that looks and feels like cotton but moves like performance gear — a structured 6-panel crown, a clean curved brim, and a raised embroidered mark.</p>
       <ul class="specs reveal" data-delay="1">
-        <li><span class="sn">01</span><span class="st"><strong>Structured Mid-Profile</strong><span>Holds its shape — no break-in, no slouch.</span></span></li>
-        <li><span class="sn">02</span><span class="st"><strong>Raised Embroidered Mark</strong><span>3D-stitched ELVTD GEAR logo, front and center.</span></span></li>
-        <li><span class="sn">03</span><span class="st"><strong>Adjustable Snap Fit</strong><span>One size, true to every head.</span></span></li>
-        <li><span class="sn">04</span><span class="st"><strong>Built To Last</strong><span>Premium cotton-blend twill, sweat-ready.</span></span></li>
+        <li><span class="sn">01</span><span class="st"><strong>Premium Polyester</strong><span>100% brushed polyester — soft, cotton-like feel that dries faster than cotton.</span></span></li>
+        <li><span class="sn">02</span><span class="st"><strong>Structured 6-Panel</strong><span>Holds its shape — curved brim, no break-in, no slouch.</span></span></li>
+        <li><span class="sn">03</span><span class="st"><strong>Built For Sweat</strong><span>Made for the gym, running, and working out.</span></span></li>
+        <li><span class="sn">04</span><span class="st"><strong>Raised Embroidered Mark</strong><span>3D-stitched ELVTD GEAR logo · adjustable snap fit, true to every head.</span></span></li>
       </ul>
       <a class="btn reveal" data-delay="2" href="#reserve">Reserve Your Colorway</a>
     </div>
@@ -435,11 +430,12 @@
     <p class="reveal">Shot on the people who live in it — from the squat rack to King Street to the summit.</p>
   </div>
   <div class="look-grid">
-    <div class="look wide reveal"><img src="assets/look-mountain.jpg" alt="ELVTD GEAR olive cap at sunset" /></div>
-    <div class="look tall reveal" data-delay="1"><img src="assets/look-coffee.jpg" alt="ELVTD GEAR cap at a coffee shop" /></div>
-    <div class="look third reveal"><img src="assets/look-track.jpg" alt="ELVTD GEAR navy cap at the track" /></div>
-    <div class="look third reveal" data-delay="1"><img src="assets/look-street.jpg" alt="ELVTD GEAR cap on King Street" /></div>
-    <div class="look third reveal" data-delay="2"><img src="assets/look-gym.jpg" alt="ELVTD GEAR white cap in the gym" /></div>
+    <div class="look reveal"><img src="assets/look-mountain.jpg" alt="ELVTD GEAR olive cap at sunset" /></div>
+    <div class="look reveal" data-delay="1"><img src="assets/look-coffee.jpg" alt="ELVTD GEAR cap at a coffee shop" /></div>
+    <div class="look reveal" data-delay="2"><img src="assets/look-track.jpg" alt="ELVTD GEAR navy cap at the track" /></div>
+    <div class="look reveal"><img src="assets/look-street.jpg" alt="ELVTD GEAR cap on King Street" /></div>
+    <div class="look reveal" data-delay="1"><img src="assets/look-gym.jpg" alt="ELVTD GEAR white cap in the gym" /></div>
+    <div class="look reveal" data-delay="2"><img src="assets/tee-front.jpg" alt="ELVTD GEAR tee in studio" /></div>
   </div>
 </section>
 
@@ -453,7 +449,7 @@
     <p class="reveal">The ELVTD GEAR tee — heavyweight, oversized, built for more. Dropping next. Join the list to be first.</p>
   </div>
   <div class="apparel">
-    <div class="apparel-card reveal"><img src="assets/tee-front.jpg" alt="ELVTD GEAR tee front" /><div class="ov"><h3>Essential Tee — Front</h3><span>Coming Soon</span></div></div>
+    <div class="apparel-card reveal"><img src="assets/look-tee.jpg" alt="ELVTD GEAR olive tee worn in the gym" /><div class="ov"><h3>Essential Tee — Front</h3><span>Coming Soon</span></div></div>
     <div class="apparel-card reveal" data-delay="1"><img src="assets/tee-back.jpg" alt="ELVTD GEAR tee back print" /><div class="ov"><h3>Essential Tee — Back</h3><span>Coming Soon</span></div></div>
   </div>
 </section>
@@ -534,7 +530,7 @@
   <div class="faq">
     <div class="faq-item reveal"><button class="faq-q">What does "reserving" a hat mean?<span class="pm">+</span></button><div class="faq-a"><p>Drop 001 sold out, so reservations let you lock in your spot for the next run. There's no payment now — you tell us the color and fit you want, and we email you with a checkout link the moment it's back in stock.</p></div></div>
     <div class="faq-item reveal"><button class="faq-q">When is the next drop?<span class="pm">+</span></button><div class="faq-a"><p>The next run of caps is in production now. Reserve your colorway or join the list at the bottom of the page and you'll be the first to know the exact release date.</p></div></div>
-    <div class="faq-item reveal"><button class="faq-q">What are the caps made of?<span class="pm">+</span></button><div class="faq-a"><p>A premium cotton-blend twill with a structured mid-profile crown and a raised, 3D-embroidered ELVTD GEAR mark. One adjustable size, true to every head, and built to hold its shape.</p></div></div>
+    <div class="faq-item reveal"><button class="faq-q">What are the caps made of?<span class="pm">+</span></button><div class="faq-a"><p>100% premium brushed polyester — a structured 6-panel crown, curved brim, and a raised 3D-embroidered ELVTD GEAR mark. It has the soft look and feel of cotton but dries faster and is built for sweat: the gym, running, and working out. One adjustable size, true to every head.</p></div></div>
     <div class="faq-item reveal"><button class="faq-q">Do you ship outside Canada?<span class="pm">+</span></button><div class="faq-a"><p>Yes — ELVTD GEAR ships across North America, with more regions opening up as we grow. Shipping options are shown at checkout once your reservation is ready.</p></div></div>
     <div class="faq-item reveal"><button class="faq-q">Is apparel coming?<span class="pm">+</span></button><div class="faq-a"><p>It is. The ELVTD GEAR essential tee — heavyweight and oversized — is next from the line. Join the list to be first when it drops.</p></div></div>
   </div>
