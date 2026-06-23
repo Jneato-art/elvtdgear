@@ -4,7 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ELVTD GEAR — Built For More</title>
-<meta name="description" content="ELVTD GEAR. Premium athletic wear. Casual performance wear. Designed for performance, built for life." />
+<meta name="description" content="ELVTD GEAR. Premium athletic wear, built for performance and life. Drop 001 — structured performance caps in five colorways. Reserve yours." />
+<meta property="og:title" content="ELVTD GEAR — Built For More" />
+<meta property="og:description" content="Premium athletic wear. Designed for performance, built for life. Reserve Drop 001." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#0a0a0b" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -13,433 +17,623 @@
   :root {
     --bg: #0a0a0b;
     --bg-soft: #111113;
-    --bg-card: #151517;
+    --bg-card: #161618;
+    --cream: #f3f1ea;
+    --cream-soft: #e9e6dc;
     --line: rgba(255,255,255,.08);
+    --line-dark: rgba(10,10,11,.10);
     --text: #f4f4f2;
-    --text-dim: rgba(244,244,242,.55);
-    --text-faint: rgba(244,244,242,.35);
+    --text-dim: rgba(244,244,242,.56);
+    --text-faint: rgba(244,244,242,.34);
+    --ink: #14140f;
+    --ink-dim: rgba(20,20,15,.62);
     --accent: #e8e4dc;
+    --red: #d23b39;
     --display: 'Inter Tight', sans-serif;
     --body: 'Inter', sans-serif;
+    --r: 16px;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
   body {
     background:var(--bg); color:var(--text);
     font-family:var(--body); font-weight:300;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
   }
   ::selection { background:var(--accent); color:var(--bg); }
   img { display:block; width:100%; height:100%; object-fit:cover; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { max-width:1320px; margin:0 auto; }
+
+  /* ---------- ANNOUNCEMENT BAR ---------- */
+  .announce {
+    background:var(--accent); color:var(--bg);
+    text-align:center; font-family:var(--display); font-weight:600;
+    font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+    padding:9px 16px; position:relative; z-index:120;
+  }
+  .announce a { text-decoration:underline; text-underline-offset:2px; }
 
   /* ---------- NAV ---------- */
   nav {
-    position:fixed; top:0; left:0; right:0; z-index:100;
+    position:sticky; top:0; z-index:100;
     display:flex; align-items:center; justify-content:space-between;
-    padding:22px clamp(20px,5vw,64px);
-    transition:background .4s, padding .4s, border-color .4s;
-    border-bottom:1px solid transparent;
+    padding:18px clamp(20px,5vw,56px);
+    background:rgba(10,10,11,.7); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+    border-bottom:1px solid transparent; transition:border-color .4s, padding .4s, background .4s;
   }
-  nav.scrolled {
-    background:rgba(10,10,11,.82);
-    backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
-    padding:14px clamp(20px,5vw,64px);
-    border-bottom-color:var(--line);
-  }
-  .nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text); }
-  .nav-logo svg { width:30px; height:30px; }
-  .nav-logo span {
-    font-family:var(--display); font-weight:700; font-size:15px;
-    letter-spacing:.42em; text-indent:.42em;
-  }
-  .nav-links { display:flex; gap:38px; align-items:center; }
-  .nav-links a {
-    color:var(--text-dim); text-decoration:none; font-size:12px;
-    letter-spacing:.22em; text-transform:uppercase; font-weight:400;
-    transition:color .3s;
-  }
+  nav.scrolled { border-bottom-color:var(--line); padding:13px clamp(20px,5vw,56px); }
+  .nav-logo { display:flex; align-items:center; gap:11px; }
+  .nav-logo svg { width:28px; height:28px; }
+  .nav-logo span { font-family:var(--display); font-weight:700; font-size:14px; letter-spacing:.34em; text-indent:.34em; }
+  .nav-links { display:flex; gap:34px; align-items:center; }
+  .nav-links a { color:var(--text-dim); font-size:12px; letter-spacing:.2em; text-transform:uppercase; font-weight:400; transition:color .3s; }
   .nav-links a:hover { color:var(--text); }
   .nav-cta {
-    border:1px solid var(--line); padding:10px 22px; border-radius:100px;
-    color:var(--text) !important; transition:background .3s, color .3s !important;
+    border:1px solid var(--line); padding:11px 24px; border-radius:100px;
+    color:var(--text) !important; transition:background .3s, color .3s, border-color .3s;
   }
-  .nav-cta:hover { background:var(--accent); color:var(--bg) !important; }
+  .nav-cta:hover { background:var(--accent); color:var(--bg) !important; border-color:var(--accent); }
   .burger { display:none; background:none; border:none; cursor:pointer; z-index:110; }
   .burger span { display:block; width:24px; height:1.5px; background:var(--text); margin:6px 0; transition:.35s; }
 
-  /* ---------- HERO ---------- */
-  .hero { position:relative; height:100svh; min-height:640px; display:flex; align-items:flex-end; overflow:hidden; }
-  .hero-img { position:absolute; inset:0; }
-  .hero-img img { transform:scale(1.08); }
-  .hero::after {
-    content:''; position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(10,10,11,.35) 0%, rgba(10,10,11,.05) 40%, rgba(10,10,11,.92) 92%);
-  }
-  .hero-content {
-    position:relative; z-index:2; width:100%;
-    padding:0 clamp(20px,5vw,64px) clamp(48px,7vh,88px);
-  }
-  .hero-eyebrow {
-    display:flex; align-items:center; gap:14px;
-    font-size:11px; letter-spacing:.34em; text-transform:uppercase;
-    color:var(--text-dim); margin-bottom:22px;
-  }
-  .hero-eyebrow::before { content:''; width:42px; height:1px; background:var(--text-dim); }
-  h1 {
-    font-family:var(--display); font-weight:800;
-    font-size:clamp(52px, 11vw, 152px);
-    line-height:.92; letter-spacing:-.02em; text-transform:uppercase;
-  }
-  h1 .thin { font-weight:300; letter-spacing:.01em; }
-  .hero-row {
-    display:flex; justify-content:space-between; align-items:flex-end;
-    gap:32px; margin-top:34px; flex-wrap:wrap;
-  }
-  .hero-sub { max-width:380px; color:var(--text-dim); font-size:15px; line-height:1.7; }
+  /* ---------- BUTTONS ---------- */
   .btn {
-    display:inline-flex; align-items:center; gap:12px;
+    display:inline-flex; align-items:center; gap:11px;
     font-family:var(--display); font-size:12px; font-weight:600;
-    letter-spacing:.24em; text-transform:uppercase; text-decoration:none;
+    letter-spacing:.22em; text-transform:uppercase;
     color:var(--bg); background:var(--accent);
-    padding:18px 36px; border-radius:100px; border:none; cursor:pointer;
-    transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
+    padding:17px 34px; border-radius:100px; border:none; cursor:pointer;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, background .3s;
   }
-  .btn:hover { transform:translateY(-3px); box-shadow:0 16px 40px rgba(232,228,220,.18); }
+  .btn:hover { transform:translateY(-3px); box-shadow:0 16px 38px rgba(232,228,220,.16); }
   .btn.ghost { background:transparent; color:var(--text); border:1px solid var(--line); }
   .btn.ghost:hover { border-color:var(--text-dim); box-shadow:none; }
-  .hero-scroll {
-    position:absolute; right:clamp(20px,5vw,64px); bottom:clamp(48px,7vh,88px); z-index:2;
-    writing-mode:vertical-rl; font-size:10px; letter-spacing:.32em;
-    text-transform:uppercase; color:var(--text-faint);
-    display:flex; align-items:center; gap:12px;
-  }
-  .hero-scroll::after { content:''; width:1px; height:48px; background:var(--text-faint); animation:drip 2.2s ease-in-out infinite; }
-  @keyframes drip { 0%{transform:scaleY(0); transform-origin:top} 50%{transform:scaleY(1); transform-origin:top} 51%{transform-origin:bottom} 100%{transform:scaleY(0); transform-origin:bottom} }
+  .btn.dark { background:var(--ink); color:var(--cream); }
+  .btn.full { width:100%; justify-content:center; }
+
+  /* ---------- HERO ---------- */
+  .hero { position:relative; min-height:calc(100svh - 100px); display:flex; align-items:flex-end; overflow:hidden; }
+  .hero-img { position:absolute; inset:0; }
+  .hero-img img { transform:scale(1.06); object-position:50% 30%; }
+  .hero::after { content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(10,10,11,.55) 0%, rgba(10,10,11,.12) 38%, rgba(10,10,11,.55) 72%, rgba(10,10,11,.96) 100%); }
+  .hero-content { position:relative; z-index:2; width:100%; padding:0 clamp(20px,5vw,56px) clamp(44px,7vh,80px); }
+  .eyebrow { display:inline-flex; align-items:center; gap:13px; font-size:11px; letter-spacing:.32em; text-transform:uppercase; color:var(--text-dim); margin-bottom:20px; }
+  .eyebrow::before { content:''; width:38px; height:1px; background:currentColor; opacity:.7; }
+  h1 { font-family:var(--display); font-weight:800; font-size:clamp(50px,10.5vw,150px); line-height:.9; letter-spacing:-.02em; text-transform:uppercase; }
+  h1 .thin { font-weight:300; letter-spacing:.005em; }
+  .hero-row { display:flex; justify-content:space-between; align-items:flex-end; gap:30px; margin-top:32px; flex-wrap:wrap; }
+  .hero-sub { max-width:400px; color:var(--text-dim); font-size:15px; line-height:1.7; }
+  .hero-actions { display:flex; gap:13px; flex-wrap:wrap; }
 
   /* ---------- MARQUEE ---------- */
-  .marquee { border-block:1px solid var(--line); padding:20px 0; overflow:hidden; background:var(--bg-soft); }
-  .marquee-track { display:flex; gap:0; width:max-content; animation:scroll 28s linear infinite; }
-  .marquee span {
-    font-family:var(--display); font-weight:700; font-size:14px;
-    letter-spacing:.34em; text-transform:uppercase; white-space:nowrap;
-    color:var(--text-faint); padding:0 28px; display:flex; align-items:center; gap:56px;
-  }
-  .marquee span::after { content:'◦'; color:var(--text-faint); }
+  .marquee { border-block:1px solid var(--line); padding:18px 0; overflow:hidden; background:var(--bg-soft); }
+  .marquee-track { display:flex; width:max-content; animation:scroll 30s linear infinite; }
+  .marquee span { font-family:var(--display); font-weight:700; font-size:14px; letter-spacing:.32em; text-transform:uppercase; white-space:nowrap; color:var(--text-faint); display:flex; align-items:center; gap:52px; padding-right:52px; }
+  .marquee span::after { content:'✦'; font-size:9px; }
   @keyframes scroll { to { transform:translateX(-50%); } }
 
-  /* ---------- SECTIONS ---------- */
-  section { padding:clamp(80px,12vh,140px) clamp(20px,5vw,64px); }
-  .section-head { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:clamp(40px,6vh,64px); flex-wrap:wrap; }
-  .kicker {
-    font-size:11px; letter-spacing:.34em; text-transform:uppercase;
-    color:var(--text-dim); display:flex; align-items:center; gap:14px; margin-bottom:18px;
-  }
-  .kicker::before { content:''; width:42px; height:1px; background:var(--text-dim); }
-  h2 {
-    font-family:var(--display); font-weight:800; text-transform:uppercase;
-    font-size:clamp(34px,5.5vw,64px); line-height:1; letter-spacing:-.015em;
-  }
-  .section-head p { max-width:340px; color:var(--text-dim); font-size:14px; line-height:1.7; }
+  /* ---------- SECTION SHELL ---------- */
+  section { padding:clamp(72px,11vh,132px) clamp(20px,5vw,56px); }
+  .head { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:clamp(38px,6vh,60px); flex-wrap:wrap; }
+  .kicker { font-size:11px; letter-spacing:.32em; text-transform:uppercase; color:var(--text-dim); display:flex; align-items:center; gap:13px; margin-bottom:16px; }
+  .kicker::before { content:''; width:38px; height:1px; background:currentColor; opacity:.7; }
+  h2 { font-family:var(--display); font-weight:800; text-transform:uppercase; font-size:clamp(32px,5.2vw,62px); line-height:1; letter-spacing:-.015em; }
+  .head p { max-width:340px; color:var(--text-dim); font-size:14px; line-height:1.7; }
+  .section-light { background:var(--cream); color:var(--ink); }
+  .section-light .kicker, .section-light .head p { color:var(--ink-dim); }
 
   /* ---------- COLLECTION ---------- */
-  .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(16px,2vw,28px); }
-  .card { position:relative; border-radius:18px; overflow:hidden; background:var(--bg-card); border:1px solid var(--line); cursor:pointer; }
-  .card-img { aspect-ratio:1/1; overflow:hidden; }
-  .card-img img { transition:transform .8s cubic-bezier(.2,.8,.2,1); }
+  .grid5 { display:grid; grid-template-columns:repeat(5,1fr); gap:clamp(12px,1.4vw,20px); }
+  .card { position:relative; border-radius:var(--r); overflow:hidden; background:var(--bg-card); border:1px solid var(--line); }
+  .card-img { aspect-ratio:3/4; overflow:hidden; position:relative; }
+  .card-img img { transition:transform .85s cubic-bezier(.2,.8,.2,1); }
   .card:hover .card-img img { transform:scale(1.05); }
-  .card-tag {
-    position:absolute; top:18px; left:18px;
-    font-size:10px; letter-spacing:.26em; text-transform:uppercase;
-    background:rgba(10,10,11,.65); backdrop-filter:blur(8px);
-    padding:8px 14px; border-radius:100px; border:1px solid var(--line);
-  }
-  .card-info {
-    display:flex; justify-content:space-between; align-items:center;
-    padding:20px 22px;
-  }
-  .card-info h3 { font-family:var(--display); font-weight:600; font-size:16px; letter-spacing:.04em; }
-  .card-info .meta { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--text-dim); margin-top:5px; }
-  .card-price { font-family:var(--display); font-weight:500; font-size:14px; color:var(--text-dim); }
+  .tag { position:absolute; top:14px; left:14px; font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; background:rgba(10,10,11,.6); backdrop-filter:blur(8px); padding:7px 12px; border-radius:100px; border:1px solid var(--line); }
+  .tag.sold { background:rgba(210,59,57,.16); border-color:rgba(210,59,57,.4); color:#f0a3a2; }
+  .card-info { padding:16px 16px 18px; }
+  .card-info h3 { font-family:var(--display); font-weight:600; font-size:15px; letter-spacing:.03em; }
+  .card-info .meta { font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--text-dim); margin-top:5px; }
+  .card-info .reserve-link { display:inline-block; margin-top:12px; font-family:var(--display); font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--text); border-bottom:1px solid var(--text-faint); padding-bottom:2px; transition:border-color .3s; }
+  .card-info .reserve-link:hover { border-color:var(--text); }
 
-  /* ---------- STORY ---------- */
-  .story { display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(32px,5vw,80px); align-items:center; }
-  .story-img { border-radius:20px; overflow:hidden; aspect-ratio:4/5; border:1px solid var(--line); }
-  .story h2 { margin-bottom:28px; }
-  .story p { color:var(--text-dim); font-size:16px; line-height:1.85; max-width:480px; margin-bottom:18px; }
-  .story-stats { display:flex; gap:clamp(28px,4vw,56px); margin-top:40px; flex-wrap:wrap; }
-  .stat .num { font-family:var(--display); font-weight:800; font-size:clamp(30px,3.5vw,44px); }
-  .stat .lbl { font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--text-faint); margin-top:6px; }
+  /* ---------- FEATURED SPLIT ---------- */
+  .feature { display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,5vw,72px); align-items:center; }
+  .feature-img { border-radius:var(--r); overflow:hidden; aspect-ratio:4/5; border:1px solid var(--line); }
+  .feature h2 { margin-bottom:22px; }
+  .feature-lead { color:var(--text-dim); font-size:16px; line-height:1.8; margin-bottom:28px; max-width:460px; }
+  .specs { list-style:none; display:grid; gap:2px; margin-bottom:30px; }
+  .specs li { display:flex; gap:14px; align-items:flex-start; padding:14px 0; border-top:1px solid var(--line); font-size:14px; }
+  .specs li:last-child { border-bottom:1px solid var(--line); }
+  .specs .sn { font-family:var(--display); font-weight:700; color:var(--text-faint); font-size:12px; min-width:28px; padding-top:1px; }
+  .specs .st strong { display:block; font-family:var(--display); font-weight:600; font-size:14px; letter-spacing:.02em; margin-bottom:3px; }
+  .specs .st span { color:var(--text-dim); font-size:13px; line-height:1.5; }
+
+  /* ---------- STORY (light) ---------- */
+  .story { display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(32px,5vw,80px); align-items:center; }
+  .story-img { border-radius:var(--r); overflow:hidden; aspect-ratio:4/5; border:1px solid var(--line-dark); }
+  .story h2 { margin-bottom:24px; }
+  .story p { color:var(--ink-dim); font-size:16px; line-height:1.85; max-width:470px; margin-bottom:18px; }
+  .stats { display:flex; gap:clamp(24px,4vw,52px); margin-top:38px; flex-wrap:wrap; }
+  .stat .num { font-family:var(--display); font-weight:800; font-size:clamp(28px,3.4vw,42px); }
+  .stat .lbl { font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-dim); margin-top:6px; }
+
+  /* ---------- PILLARS ---------- */
+  .pillars { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,2vw,28px); }
+  .pillar { border:1px solid var(--line); border-radius:var(--r); padding:34px 30px; background:var(--bg-soft); transition:border-color .3s, transform .3s; }
+  .pillar:hover { border-color:var(--text-faint); transform:translateY(-4px); }
+  .pillar .pico { width:42px; height:42px; border-radius:50%; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; margin-bottom:22px; }
+  .pillar h3 { font-family:var(--display); font-weight:700; text-transform:uppercase; font-size:18px; letter-spacing:.02em; margin-bottom:12px; }
+  .pillar p { color:var(--text-dim); font-size:14px; line-height:1.7; }
 
   /* ---------- LOOKBOOK ---------- */
-  .look-grid { display:grid; grid-template-columns:repeat(12,1fr); gap:clamp(14px,1.6vw,22px); }
-  .look { border-radius:18px; overflow:hidden; border:1px solid var(--line); position:relative; }
+  .look-grid { display:grid; grid-template-columns:repeat(12,1fr); gap:clamp(12px,1.5vw,20px); }
+  .look { border-radius:var(--r); overflow:hidden; border:1px solid var(--line); }
   .look img { transition:transform .9s cubic-bezier(.2,.8,.2,1); }
   .look:hover img { transform:scale(1.06); }
-  .look.a { grid-column:span 7; aspect-ratio:16/10; }
-  .look.b { grid-column:span 5; aspect-ratio:auto; }
-  .look.c { grid-column:span 5; aspect-ratio:auto; }
-  .look.d { grid-column:span 7; aspect-ratio:16/10; }
-  .look.e { grid-column:span 7; aspect-ratio:16/10; }
-  .look.f { grid-column:span 5; aspect-ratio:auto; }
+  .look.tall { grid-column:span 4; aspect-ratio:3/4; }
+  .look.wide { grid-column:span 8; aspect-ratio:16/11; }
+  .look.half { grid-column:span 6; aspect-ratio:3/2; }
+  .look.third { grid-column:span 4; aspect-ratio:3/4; }
 
-  /* ---------- SIGNUP ---------- */
-  .signup { text-align:center; border-top:1px solid var(--line); }
-  .signup .logo-mark { width:54px; height:54px; margin:0 auto 30px; opacity:.9; }
-  .signup h2 { font-size:clamp(38px,6vw,76px); }
-  .signup p { color:var(--text-dim); max-width:420px; margin:22px auto 40px; font-size:15px; line-height:1.75; }
-  .signup-form { display:flex; gap:10px; max-width:480px; margin:0 auto; }
-  .signup-form input {
-    flex:1; background:var(--bg-card); border:1px solid var(--line);
-    border-radius:100px; padding:18px 26px; color:var(--text);
-    font-family:var(--body); font-size:14px; outline:none; transition:border-color .3s;
+  /* ---------- APPAREL TEASER ---------- */
+  .apparel { display:grid; grid-template-columns:1fr 1fr; gap:clamp(12px,1.5vw,20px); }
+  .apparel-card { position:relative; border-radius:var(--r); overflow:hidden; aspect-ratio:4/5; border:1px solid var(--line); }
+  .apparel-card img { transition:transform .85s cubic-bezier(.2,.8,.2,1); filter:saturate(1.02); }
+  .apparel-card:hover img { transform:scale(1.04); }
+  .apparel-card .ov { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:28px; background:linear-gradient(180deg,transparent 50%,rgba(10,10,11,.85)); }
+  .apparel-card .ov h3 { font-family:var(--display); font-weight:700; text-transform:uppercase; font-size:20px; letter-spacing:.02em; }
+  .apparel-card .ov span { font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--text-dim); margin-top:6px; }
+
+  /* ---------- RESERVE FORM ---------- */
+  .reserve { background:var(--bg-soft); border-block:1px solid var(--line); }
+  .reserve-inner { display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(34px,5vw,72px); align-items:start; }
+  .reserve-copy h2 { margin-bottom:22px; }
+  .reserve-copy p { color:var(--text-dim); font-size:16px; line-height:1.8; max-width:420px; margin-bottom:18px; }
+  .reserve-note { display:flex; gap:12px; align-items:flex-start; margin-top:24px; padding:16px 18px; border:1px solid var(--line); border-radius:12px; background:var(--bg-card); }
+  .reserve-note span { font-size:13px; color:var(--text-dim); line-height:1.6; }
+  form .field { margin-bottom:16px; }
+  form label { display:block; font-family:var(--display); font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--text-dim); margin-bottom:9px; }
+  .input, select, textarea {
+    width:100%; background:var(--bg-card); border:1px solid var(--line); border-radius:12px;
+    padding:15px 17px; color:var(--text); font-family:var(--body); font-size:14px; outline:none; transition:border-color .3s;
   }
-  .signup-form input:focus { border-color:rgba(244,244,242,.35); }
-  .signup-form input::placeholder { color:var(--text-faint); }
-  .signup-success { display:none; font-family:var(--display); letter-spacing:.18em; text-transform:uppercase; font-size:13px; color:var(--accent); margin-top:8px; }
+  .input:focus, select:focus, textarea:focus { border-color:rgba(244,244,242,.4); }
+  .input::placeholder, textarea::placeholder { color:var(--text-faint); }
+  select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 17px center; padding-right:40px; }
+  .row2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .swatches { display:flex; gap:10px; flex-wrap:wrap; margin-top:2px; }
+  .swatch { cursor:pointer; }
+  .swatch input { position:absolute; opacity:0; pointer-events:none; }
+  .swatch .dot { display:flex; align-items:center; gap:9px; border:1px solid var(--line); border-radius:100px; padding:8px 14px 8px 9px; transition:border-color .25s, background .25s; }
+  .swatch .ring { width:18px; height:18px; border-radius:50%; border:1px solid rgba(255,255,255,.25); flex-shrink:0; }
+  .swatch .cn { font-size:12px; letter-spacing:.04em; color:var(--text-dim); transition:color .25s; }
+  .swatch input:checked + .dot { border-color:var(--accent); background:rgba(232,228,220,.08); }
+  .swatch input:checked + .dot .cn { color:var(--text); }
+  .form-success { display:none; text-align:center; padding:40px 24px; border:1px solid var(--line); border-radius:var(--r); background:var(--bg-card); }
+  .form-success.show { display:block; }
+  .form-success .ok { width:54px; height:54px; border-radius:50%; background:var(--accent); color:var(--bg); display:flex; align-items:center; justify-content:center; margin:0 auto 18px; font-size:26px; }
+  .form-success h3 { font-family:var(--display); font-weight:700; text-transform:uppercase; letter-spacing:.04em; font-size:22px; margin-bottom:10px; }
+  .form-success p { color:var(--text-dim); font-size:14px; line-height:1.6; max-width:340px; margin:0 auto; }
+
+  /* ---------- FAQ ---------- */
+  .faq { max-width:820px; margin:0 auto; }
+  .faq-item { border-top:1px solid var(--line); }
+  .faq-item:last-child { border-bottom:1px solid var(--line); }
+  .faq-q { width:100%; background:none; border:none; cursor:pointer; color:var(--text); display:flex; justify-content:space-between; align-items:center; gap:20px; padding:26px 4px; text-align:left; font-family:var(--display); font-weight:600; font-size:clamp(16px,2vw,20px); letter-spacing:.01em; }
+  .faq-q .pm { font-size:24px; font-weight:300; transition:transform .3s; flex-shrink:0; color:var(--text-dim); }
+  .faq-item.open .pm { transform:rotate(45deg); }
+  .faq-a { max-height:0; overflow:hidden; transition:max-height .4s ease; }
+  .faq-a p { color:var(--text-dim); font-size:15px; line-height:1.75; padding:0 4px 26px; max-width:680px; }
+
+  /* ---------- NEWSLETTER ---------- */
+  .news { text-align:center; border-top:1px solid var(--line); }
+  .news .logo-mark { width:50px; height:50px; margin:0 auto 26px; opacity:.9; }
+  .news h2 { font-size:clamp(30px,4.6vw,56px); }
+  .news p { color:var(--text-dim); max-width:420px; margin:20px auto 34px; font-size:15px; line-height:1.7; }
+  .news-form { display:flex; gap:10px; max-width:460px; margin:0 auto; }
+  .news-form input { flex:1; border-radius:100px; }
+  .news-success { display:none; font-family:var(--display); letter-spacing:.16em; text-transform:uppercase; font-size:12px; color:var(--accent); margin-top:14px; }
 
   /* ---------- FOOTER ---------- */
-  footer {
-    border-top:1px solid var(--line);
-    padding:48px clamp(20px,5vw,64px);
-    display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;
-  }
-  .foot-logo { display:flex; align-items:center; gap:10px; }
-  .foot-logo svg { width:22px; height:22px; opacity:.7; }
-  .foot-logo span { font-family:var(--display); font-weight:700; font-size:12px; letter-spacing:.4em; color:var(--text-dim); }
-  footer .tagline, footer .copy { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--text-faint); }
+  footer { background:var(--bg-soft); border-top:1px solid var(--line); padding:clamp(48px,7vh,72px) clamp(20px,5vw,56px) 36px; }
+  .foot-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:40px; margin-bottom:48px; }
+  .foot-brand .fl { display:flex; align-items:center; gap:11px; margin-bottom:18px; }
+  .foot-brand .fl svg { width:26px; height:26px; }
+  .foot-brand .fl span { font-family:var(--display); font-weight:700; font-size:14px; letter-spacing:.32em; }
+  .foot-brand p { color:var(--text-dim); font-size:13.5px; line-height:1.7; max-width:280px; }
+  .foot-col h4 { font-family:var(--display); font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--text-faint); margin-bottom:18px; }
+  .foot-col a { display:block; color:var(--text-dim); font-size:14px; margin-bottom:12px; transition:color .25s; }
+  .foot-col a:hover { color:var(--text); }
+  .foot-bottom { display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; padding-top:28px; border-top:1px solid var(--line); }
+  .foot-bottom span { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-faint); }
 
   /* ---------- REVEAL ---------- */
-  .reveal { opacity:0; transform:translateY(34px); transition:opacity .9s ease, transform .9s cubic-bezier(.2,.8,.2,1); }
+  .reveal { opacity:0; transform:translateY(30px); transition:opacity .9s ease, transform .9s cubic-bezier(.2,.8,.2,1); }
   .reveal.visible { opacity:1; transform:none; }
-  .reveal[data-delay="1"] { transition-delay:.12s; }
-  .reveal[data-delay="2"] { transition-delay:.24s; }
-  .reveal[data-delay="3"] { transition-delay:.36s; }
+  .reveal[data-delay="1"]{transition-delay:.1s} .reveal[data-delay="2"]{transition-delay:.2s}
+  .reveal[data-delay="3"]{transition-delay:.3s} .reveal[data-delay="4"]{transition-delay:.4s}
 
-  /* ---------- MOBILE ---------- */
-  @media (max-width: 900px) {
-    .grid { grid-template-columns:1fr 1fr; }
-    .story { grid-template-columns:1fr; }
-    .look.a,.look.b,.look.c,.look.d,.look.e,.look.f { grid-column:span 12; aspect-ratio:4/5; }
-    .look.a,.look.d,.look.e { aspect-ratio:16/11; }
-    .grid { grid-template-columns:1fr 1fr; }
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1080px){
+    .grid5 { grid-template-columns:repeat(3,1fr); }
+    .feature, .story, .reserve-inner { grid-template-columns:1fr; }
+    .story-img, .feature-img { max-width:520px; }
   }
-  @media (max-width: 640px) {
-    .nav-links {
-      position:fixed; inset:0; background:rgba(10,10,11,.97);
-      backdrop-filter:blur(20px);
-      flex-direction:column; justify-content:center; gap:34px;
-      opacity:0; pointer-events:none; transition:opacity .4s;
-    }
+  @media (max-width:760px){
+    .pillars { grid-template-columns:1fr; }
+    .apparel { grid-template-columns:1fr; }
+    .look.tall,.look.wide,.look.half,.look.third { grid-column:span 12; aspect-ratio:3/4; }
+    .look.wide,.look.half { aspect-ratio:16/11; }
+  }
+  @media (max-width:640px){
+    .nav-links { position:fixed; inset:0; background:rgba(10,10,11,.98); backdrop-filter:blur(20px); flex-direction:column; justify-content:center; gap:32px; opacity:0; pointer-events:none; transition:opacity .4s; }
     .nav-links.open { opacity:1; pointer-events:auto; }
-    .nav-links a { font-size:16px; }
+    .nav-links a { font-size:17px; }
     .burger { display:block; }
     .burger.open span:nth-child(1){ transform:translateY(7.5px) rotate(45deg); }
     .burger.open span:nth-child(2){ opacity:0; }
     .burger.open span:nth-child(3){ transform:translateY(-7.5px) rotate(-45deg); }
-    .grid { grid-template-columns:1fr; }
-    .signup-form { flex-direction:column; }
-    .signup-form .btn { justify-content:center; }
-    .hero-scroll { display:none; }
+    .grid5 { grid-template-columns:1fr 1fr; }
+    .row2 { grid-template-columns:1fr; }
+    .news-form { flex-direction:column; }
+    .foot-grid { grid-template-columns:1fr 1fr; gap:32px; }
   }
 </style>
 </head>
 <body>
 
+<!-- ANNOUNCEMENT -->
+<div class="announce">Drop 001 is here — limited run · <a href="#reserve">Reserve your colorway</a></div>
+
 <!-- NAV -->
 <nav id="nav">
-  <a class="nav-logo" href="#top" aria-label="ELVTD home">
-    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="24" cy="24" r="20.5" stroke="currentColor" stroke-width="4"/>
-      <rect x="15" y="15.5" width="18" height="4" fill="currentColor"/>
-      <rect x="15" y="22" width="18" height="4" fill="currentColor"/>
-      <rect x="15" y="28.5" width="18" height="4" fill="currentColor"/>
-    </svg>
-    <span>ELVTD</span>
+  <a class="nav-logo" href="#top" aria-label="ELVTD GEAR home">
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="20.5" stroke="currentColor" stroke-width="4"/><rect x="15" y="15.5" width="18" height="4" fill="currentColor"/><rect x="15" y="22" width="18" height="4" fill="currentColor"/><rect x="15" y="28.5" width="18" height="4" fill="currentColor"/></svg>
+    <span>ELVTD GEAR</span>
   </a>
   <div class="nav-links" id="navLinks">
     <a href="#collection">Collection</a>
-    <a href="#story">Brand</a>
+    <a href="#about">Brand</a>
     <a href="#lookbook">Lookbook</a>
-    <a href="#notify" class="nav-cta">Get Notified</a>
+    <a href="#faq">FAQ</a>
+    <a href="#reserve" class="nav-cta">Reserve</a>
   </div>
   <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- HERO -->
 <header class="hero" id="top">
-  <div class="hero-img"><img src="assets/hero.jpg" style="object-position:50% 22%;" alt="ELVTD tee and cap at night" id="heroImg" /></div>
+  <div class="hero-img"><img src="assets/hero.jpg" alt="Athlete in ELVTD GEAR olive tee and cap training" id="heroImg" /></div>
   <div class="hero-content">
-    <div class="hero-eyebrow reveal visible">Premium Athletic Wear</div>
-    <h1 class="reveal visible">Built<br/><span class="thin">For</span> More</h1>
-    <div class="hero-row reveal visible" data-delay="1">
-      <p class="hero-sub">Casual performance wear engineered for the gym, the street, and everything in between. No noise. Just standards.</p>
-      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+    <div class="eyebrow">Premium Athletic Wear · Drop 001</div>
+    <h1>Built<br/><span class="thin">For</span> More</h1>
+    <div class="hero-row">
+      <p class="hero-sub">ELVTD GEAR is performance wear for the gym, the street, and everything between. Built clean. Built to last. Built for more.</p>
+      <div class="hero-actions">
         <a class="btn" href="#collection">View Collection</a>
-        <a class="btn ghost" href="#notify">First Drop Access</a>
+        <a class="btn ghost" href="#reserve">Reserve Yours</a>
       </div>
     </div>
   </div>
-  <div class="hero-scroll">Scroll</div>
 </header>
 
 <!-- MARQUEE -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Elvtd Gear</span><span>Built For More</span><span>Designed For Performance</span><span>Built For Life</span>
-    <span>Elvtd Gear</span><span>Built For More</span><span>Designed For Performance</span><span>Built For Life</span>
+    <span>ELVTD GEAR</span><span>Built For More</span><span>Designed For Performance</span><span>Built For Life</span>
+    <span>ELVTD GEAR</span><span>Built For More</span><span>Designed For Performance</span><span>Built For Life</span>
   </div>
 </div>
 
 <!-- COLLECTION -->
 <section id="collection">
-  <div class="section-head">
+  <div class="head">
     <div>
-      <div class="kicker reveal">Drop 001</div>
+      <div class="kicker reveal">Drop 001 — The Caps</div>
       <h2 class="reveal">The Collection</h2>
     </div>
-    <p class="reveal">Structured five-panel caps and heavyweight essentials. Minimal branding, maximum build quality.</p>
+    <p class="reveal">Structured performance caps with a clean embroidered mark. Five colorways. First run sold out — reserve the next.</p>
   </div>
-  <div class="grid">
+  <div class="grid5">
     <div class="card reveal">
-      <div class="card-img"><img src="assets/cap-white.jpg" alt="ELVTD white performance cap" /></div>
-      <div class="card-tag">Drop 001</div>
-      <div class="card-info">
-        <div><h3>Performance Cap</h3><div class="meta">Cloud White</div></div>
-        <div class="card-price">Coming Soon</div>
-      </div>
+      <div class="card-img"><img src="assets/cap-white.jpg" alt="ELVTD GEAR cap in cloud white" /><span class="tag sold">Sold Out</span></div>
+      <div class="card-info"><h3>Performance Cap</h3><div class="meta">Cloud White</div><a class="reserve-link" href="#reserve">Reserve →</a></div>
     </div>
     <div class="card reveal" data-delay="1">
-      <div class="card-img"><img src="assets/cap-navy.jpg" alt="ELVTD navy performance cap" /></div>
-      <div class="card-tag">Drop 001</div>
-      <div class="card-info">
-        <div><h3>Performance Cap</h3><div class="meta">Midnight Navy</div></div>
-        <div class="card-price">Coming Soon</div>
-      </div>
+      <div class="card-img"><img src="assets/cap-navy.jpg" alt="ELVTD GEAR cap in midnight navy" /><span class="tag sold">Sold Out</span></div>
+      <div class="card-info"><h3>Performance Cap</h3><div class="meta">Midnight Navy</div><a class="reserve-link" href="#reserve">Reserve →</a></div>
     </div>
     <div class="card reveal" data-delay="2">
-      <div class="card-img"><img src="assets/cap-black-red.jpg" alt="ELVTD black performance cap with red logo" /></div>
-      <div class="card-tag">Drop 001</div>
-      <div class="card-info">
-        <div><h3>Performance Cap</h3><div class="meta">Blackout / Red</div></div>
-        <div class="card-price">Coming Soon</div>
-      </div>
+      <div class="card-img"><img src="assets/cap-olive.jpg" alt="ELVTD GEAR cap in olive" /><span class="tag sold">Sold Out</span></div>
+      <div class="card-info"><h3>Performance Cap</h3><div class="meta">Olive</div><a class="reserve-link" href="#reserve">Reserve →</a></div>
     </div>
     <div class="card reveal" data-delay="3">
-      <div class="card-img"><img src="assets/cap-black-white.jpg" alt="ELVTD black performance cap with white logo" /></div>
-      <div class="card-tag">Drop 001</div>
-      <div class="card-info">
-        <div><h3>Performance Cap</h3><div class="meta">Blackout / White</div></div>
-        <div class="card-price">Coming Soon</div>
-      </div>
+      <div class="card-img"><img src="assets/cap-black-white.jpg" alt="ELVTD GEAR black cap with white logo" /><span class="tag sold">Sold Out</span></div>
+      <div class="card-info"><h3>Performance Cap</h3><div class="meta">Blackout / White</div><a class="reserve-link" href="#reserve">Reserve →</a></div>
+    </div>
+    <div class="card reveal" data-delay="4">
+      <div class="card-img"><img src="assets/cap-black-red.jpg" alt="ELVTD GEAR black cap with red logo" /><span class="tag sold">Sold Out</span></div>
+      <div class="card-info"><h3>Performance Cap</h3><div class="meta">Blackout / Red</div><a class="reserve-link" href="#reserve">Reserve →</a></div>
     </div>
   </div>
 </section>
 
-<!-- STORY -->
-<section id="story" style="background:var(--bg-soft); border-block:1px solid var(--line);">
+<!-- FEATURED PRODUCT -->
+<section id="featured" style="background:var(--bg-soft); border-block:1px solid var(--line);">
+  <div class="feature">
+    <div class="feature-img reveal"><img src="assets/feature-cap.jpg" alt="ELVTD GEAR olive cap at mountain sunset" /></div>
+    <div>
+      <div class="kicker reveal">The Signature Cap</div>
+      <h2 class="reveal">Made to be<br/>worn everywhere.</h2>
+      <p class="feature-lead reveal" data-delay="1">One silhouette, dialed in. A structured mid-profile crown, a clean curved brim, and a raised embroidered mark that holds its shape from set one to set one thousand.</p>
+      <ul class="specs reveal" data-delay="1">
+        <li><span class="sn">01</span><span class="st"><strong>Structured Mid-Profile</strong><span>Holds its shape — no break-in, no slouch.</span></span></li>
+        <li><span class="sn">02</span><span class="st"><strong>Raised Embroidered Mark</strong><span>3D-stitched ELVTD GEAR logo, front and center.</span></span></li>
+        <li><span class="sn">03</span><span class="st"><strong>Adjustable Snap Fit</strong><span>One size, true to every head.</span></span></li>
+        <li><span class="sn">04</span><span class="st"><strong>Built To Last</strong><span>Premium cotton-blend twill, sweat-ready.</span></span></li>
+      </ul>
+      <a class="btn reveal" data-delay="2" href="#reserve">Reserve Your Colorway</a>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND STORY -->
+<section id="about" class="section-light">
   <div class="story">
     <div>
       <div class="kicker reveal">The Brand</div>
       <h2 class="reveal">Designed for performance.<br/>Built for life.</h2>
-      <p class="reveal" data-delay="1" style="margin-top:28px;">ELVTD exists for the ones who show up — at the gym before sunrise, at the start line in the rain, at the café after the work is done.</p>
-      <p class="reveal" data-delay="1">Every piece is cut to move and built to last. One logo. Three bars. A standard you wear, not a statement you shout.</p>
-      <div class="story-stats reveal" data-delay="2">
-        <div class="stat"><div class="num">01</div><div class="lbl">First Drop</div></div>
-        <div class="stat"><div class="num">3</div><div class="lbl">Colorways</div></div>
-        <div class="stat"><div class="num">100%</div><div class="lbl">Standard</div></div>
+      <p class="reveal" data-delay="1" style="margin-top:26px;">ELVTD GEAR exists for the ones who show up — at the gym before sunrise, at the start line in the rain, at the café after the work is done.</p>
+      <p class="reveal" data-delay="1">Every piece is cut to move and built to last. One mark. Three bars. A standard you wear, not a statement you shout. This is gear for people raising their own bar — quietly, daily.</p>
+      <div class="stats reveal" data-delay="2">
+        <div class="stat"><div class="num">001</div><div class="lbl">First Drop</div></div>
+        <div class="stat"><div class="num">5</div><div class="lbl">Colorways</div></div>
+        <div class="stat"><div class="num">100%</div><div class="lbl">Built For More</div></div>
       </div>
     </div>
-    <div class="story-img reveal" data-delay="1"><img src="assets/tee-studio.jpg" alt="ELVTD Gear essential tee" /></div>
+    <div class="story-img reveal" data-delay="1"><img src="assets/look-tee.jpg" alt="ELVTD GEAR apparel worn in the gym" /></div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section id="values">
+  <div class="head">
+    <div>
+      <div class="kicker reveal">Why ELVTD GEAR</div>
+      <h2 class="reveal">The Standard</h2>
+    </div>
+    <p class="reveal">Three things we never compromise on — from the first stitch to the last rep.</p>
+  </div>
+  <div class="pillars">
+    <div class="pillar reveal">
+      <div class="pico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f4f4f2" stroke-width="1.5"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+      <h3>Performance</h3>
+      <p>Engineered to move with you. Breathable, durable, and made to hold up to whatever the session demands.</p>
+    </div>
+    <div class="pillar reveal" data-delay="1">
+      <div class="pico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f4f4f2" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></div>
+      <h3>Lifestyle</h3>
+      <p>From the rack to the street to the coffee shop. Clean, minimal design that fits every part of your day.</p>
+    </div>
+    <div class="pillar reveal" data-delay="2">
+      <div class="pico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f4f4f2" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <h3>Community</h3>
+      <p>More than gear — a mindset. Worn by the ones raising their own bar, and the people pushing alongside them.</p>
+    </div>
   </div>
 </section>
 
 <!-- LOOKBOOK -->
-<section id="lookbook">
-  <div class="section-head">
+<section id="lookbook" style="background:var(--bg-soft); border-block:1px solid var(--line);">
+  <div class="head">
     <div>
       <div class="kicker reveal">In The Wild</div>
       <h2 class="reveal">Lookbook</h2>
     </div>
-    <p class="reveal">From the squat rack to the street. Shot on the people who live it.</p>
+    <p class="reveal">Shot on the people who live in it — from the squat rack to King Street to the summit.</p>
   </div>
   <div class="look-grid">
-    <div class="look a reveal"><img src="assets/look-ropes.jpg" alt="ELVTD training" /></div>
-    <div class="look b reveal" data-delay="1"><img src="assets/tee-back.jpg" alt="ELVTD Gear tee at night" /></div>
-    <div class="look c reveal"><img src="assets/look-coffee.jpg" alt="ELVTD coffee run" /></div>
-    <div class="look d reveal" data-delay="1"><img src="assets/look-marathon.jpg" alt="ELVTD race day" /></div>
-    <div class="look e reveal"><img src="assets/look-race.jpg" alt="ELVTD marathon" /></div>
-    <div class="look f reveal" data-delay="1"><img src="assets/look-gym.jpg" alt="ELVTD in the gym" /></div>
+    <div class="look wide reveal"><img src="assets/look-mountain.jpg" alt="ELVTD GEAR olive cap at sunset" /></div>
+    <div class="look tall reveal" data-delay="1"><img src="assets/look-coffee.jpg" alt="ELVTD GEAR cap at a coffee shop" /></div>
+    <div class="look third reveal"><img src="assets/look-track.jpg" alt="ELVTD GEAR navy cap at the track" /></div>
+    <div class="look third reveal" data-delay="1"><img src="assets/look-street.jpg" alt="ELVTD GEAR cap on King Street" /></div>
+    <div class="look third reveal" data-delay="2"><img src="assets/look-gym.jpg" alt="ELVTD GEAR white cap in the gym" /></div>
   </div>
 </section>
 
-<!-- SIGNUP -->
-<section class="signup" id="notify">
-  <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="24" cy="24" r="20.5" stroke="#f4f4f2" stroke-width="4"/>
-    <rect x="15" y="15.5" width="18" height="4" fill="#f4f4f2"/>
-    <rect x="15" y="22" width="18" height="4" fill="#f4f4f2"/>
-    <rect x="15" y="28.5" width="18" height="4" fill="#f4f4f2"/>
-  </svg>
-  <h2 class="reveal">Don't miss the drop</h2>
-  <p class="reveal" data-delay="1">Drop 001 is limited. Join the list for early access, sizing, and release dates — nothing else, ever.</p>
-  <form class="signup-form reveal" data-delay="2" id="notifyForm">
-    <input type="email" placeholder="your@email.com" required id="emailInput" />
-    <button class="btn" type="submit">Notify Me</button>
+<!-- APPAREL TEASER -->
+<section id="apparel">
+  <div class="head">
+    <div>
+      <div class="kicker reveal">Next From The Line</div>
+      <h2 class="reveal">Apparel</h2>
+    </div>
+    <p class="reveal">The ELVTD GEAR tee — heavyweight, oversized, built for more. Dropping next. Join the list to be first.</p>
+  </div>
+  <div class="apparel">
+    <div class="apparel-card reveal"><img src="assets/tee-front.jpg" alt="ELVTD GEAR tee front" /><div class="ov"><h3>Essential Tee — Front</h3><span>Coming Soon</span></div></div>
+    <div class="apparel-card reveal" data-delay="1"><img src="assets/tee-back.jpg" alt="ELVTD GEAR tee back print" /><div class="ov"><h3>Essential Tee — Back</h3><span>Coming Soon</span></div></div>
+  </div>
+</section>
+
+<!-- RESERVE FORM -->
+<section id="reserve" class="reserve">
+  <div class="reserve-inner">
+    <div class="reserve-copy">
+      <div class="kicker reveal">Reserve Your Hat</div>
+      <h2 class="reveal">Claim your<br/>colorway.</h2>
+      <p class="reveal" data-delay="1">Drop 001 sold out fast. Reserve the color and size you want and we'll reach out the moment the next run is ready — you're first in line, no payment now.</p>
+      <div class="reserve-note reveal" data-delay="1">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8e4dc" stroke-width="1.5" style="flex-shrink:0;margin-top:1px"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        <span>Reservations go straight to the ELVTD GEAR team. We'll email you with availability and a checkout link.</span>
+      </div>
+    </div>
+
+    <div class="reveal" data-delay="1">
+      <form id="reserveForm" action="https://formsubmit.co/elvtdgear@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New ELVTD GEAR hat reservation 🧢">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
+        <div class="row2">
+          <div class="field"><label for="rn">Full Name</label><input class="input" id="rn" name="Name" placeholder="Your name" required></div>
+          <div class="field"><label for="re">Email</label><input class="input" id="re" name="Email" type="email" placeholder="your@email.com" required></div>
+        </div>
+
+        <div class="field">
+          <label>Hat Color</label>
+          <div class="swatches">
+            <label class="swatch"><input type="radio" name="Hat Color" value="Cloud White" required><span class="dot"><span class="ring" style="background:#f3f1ea"></span><span class="cn">Cloud White</span></span></label>
+            <label class="swatch"><input type="radio" name="Hat Color" value="Midnight Navy"><span class="dot"><span class="ring" style="background:#1c2b4a"></span><span class="cn">Midnight Navy</span></span></label>
+            <label class="swatch"><input type="radio" name="Hat Color" value="Olive"><span class="dot"><span class="ring" style="background:#5a5b3a"></span><span class="cn">Olive</span></span></label>
+            <label class="swatch"><input type="radio" name="Hat Color" value="Blackout / White"><span class="dot"><span class="ring" style="background:#101012"></span><span class="cn">Blackout / White</span></span></label>
+            <label class="swatch"><input type="radio" name="Hat Color" value="Blackout / Red"><span class="dot"><span class="ring" style="background:#101012;box-shadow:inset 0 0 0 2px #d23b39"></span><span class="cn">Blackout / Red</span></span></label>
+          </div>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="rsize">Fit</label>
+            <select id="rsize" name="Fit Preference">
+              <option value="One Size (Adjustable)">One Size (Adjustable)</option>
+              <option value="Snug">Prefer Snug</option>
+              <option value="Relaxed">Prefer Relaxed</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="rqty">Quantity</label>
+            <select id="rqty" name="Quantity">
+              <option>1</option><option>2</option><option>3</option><option>4+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field"><label for="rm">Anything else? (optional)</label><textarea id="rm" name="Note" rows="2" placeholder="A second color, a question..."></textarea></div>
+
+        <button class="btn full" type="submit">Reserve My Hat</button>
+      </form>
+
+      <div class="form-success" id="reserveSuccess">
+        <div class="ok">✓</div>
+        <h3>You're on the list</h3>
+        <p>Your reservation is in. The ELVTD GEAR team will email you the moment your colorway is ready. Stay ready.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="head" style="justify-content:center;text-align:center;flex-direction:column;align-items:center;">
+    <div class="kicker reveal" style="justify-content:center">Good To Know</div>
+    <h2 class="reveal">FAQ</h2>
+  </div>
+  <div class="faq">
+    <div class="faq-item reveal"><button class="faq-q">What does "reserving" a hat mean?<span class="pm">+</span></button><div class="faq-a"><p>Drop 001 sold out, so reservations let you lock in your spot for the next run. There's no payment now — you tell us the color and fit you want, and we email you with a checkout link the moment it's back in stock.</p></div></div>
+    <div class="faq-item reveal"><button class="faq-q">When is the next drop?<span class="pm">+</span></button><div class="faq-a"><p>The next run of caps is in production now. Reserve your colorway or join the list at the bottom of the page and you'll be the first to know the exact release date.</p></div></div>
+    <div class="faq-item reveal"><button class="faq-q">What are the caps made of?<span class="pm">+</span></button><div class="faq-a"><p>A premium cotton-blend twill with a structured mid-profile crown and a raised, 3D-embroidered ELVTD GEAR mark. One adjustable size, true to every head, and built to hold its shape.</p></div></div>
+    <div class="faq-item reveal"><button class="faq-q">Do you ship outside Canada?<span class="pm">+</span></button><div class="faq-a"><p>Yes — ELVTD GEAR ships across North America, with more regions opening up as we grow. Shipping options are shown at checkout once your reservation is ready.</p></div></div>
+    <div class="faq-item reveal"><button class="faq-q">Is apparel coming?<span class="pm">+</span></button><div class="faq-a"><p>It is. The ELVTD GEAR essential tee — heavyweight and oversized — is next from the line. Join the list to be first when it drops.</p></div></div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="news" id="notify">
+  <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="20.5" stroke="#f4f4f2" stroke-width="4"/><rect x="15" y="15.5" width="18" height="4" fill="#f4f4f2"/><rect x="15" y="22" width="18" height="4" fill="#f4f4f2"/><rect x="15" y="28.5" width="18" height="4" fill="#f4f4f2"/></svg>
+  <h2 class="reveal">Join the movement</h2>
+  <p class="reveal" data-delay="1">Drops are limited and move fast. Get early access, release dates, and first looks — nothing else, ever.</p>
+  <form class="news-form reveal" data-delay="2" id="newsForm" action="https://formsubmit.co/elvtdgear@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="New ELVTD GEAR newsletter signup">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="_honey" style="display:none">
+    <input class="input" type="email" name="Email" placeholder="your@email.com" required />
+    <button class="btn" type="submit">Join</button>
   </form>
-  <div class="signup-success" id="successMsg">✓ You're on the list. Stay ready.</div>
+  <div class="news-success" id="newsSuccess">✓ You're on the list. Stay ready.</div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="foot-logo">
-    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="24" cy="24" r="20.5" stroke="currentColor" stroke-width="4"/>
-      <rect x="15" y="15.5" width="18" height="4" fill="currentColor"/>
-      <rect x="15" y="22" width="18" height="4" fill="currentColor"/>
-      <rect x="15" y="28.5" width="18" height="4" fill="currentColor"/>
-    </svg>
-    <span>ELVTD GEAR</span>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="fl"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="20.5" stroke="currentColor" stroke-width="4"/><rect x="15" y="15.5" width="18" height="4" fill="currentColor"/><rect x="15" y="22" width="18" height="4" fill="currentColor"/><rect x="15" y="28.5" width="18" height="4" fill="currentColor"/></svg><span>ELVTD GEAR</span></div>
+      <p>Premium athletic wear. Designed for performance, built for life. Drop 001 out now.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Shop</h4>
+      <a href="#collection">The Collection</a>
+      <a href="#reserve">Reserve a Hat</a>
+      <a href="#apparel">Apparel</a>
+    </div>
+    <div class="foot-col">
+      <h4>Brand</h4>
+      <a href="#about">Our Story</a>
+      <a href="#values">The Standard</a>
+      <a href="#lookbook">Lookbook</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="foot-col">
+      <h4>Contact</h4>
+      <a href="mailto:elvtdgear@gmail.com">elvtdgear@gmail.com</a>
+      <a href="#notify">Join the List</a>
+    </div>
   </div>
-  <div class="tagline">Built For More</div>
-  <div class="copy">© 2026 ELVTD GEAR — elvtdgear.com</div>
+  <div class="foot-bottom">
+    <span>© 2026 ELVTD GEAR — Built For More</span>
+    <span>elvtdgear.com</span>
+  </div>
 </footer>
 
 <script>
   // Nav scroll state
   const nav = document.getElementById('nav');
-  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40), {passive:true});
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 30), {passive:true});
 
   // Mobile menu
-  const burger = document.getElementById('burger');
-  const links = document.getElementById('navLinks');
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('open');
-    links.classList.toggle('open');
-  });
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    burger.classList.remove('open'); links.classList.remove('open');
-  }));
+  const burger = document.getElementById('burger'), links = document.getElementById('navLinks');
+  burger.addEventListener('click', () => { burger.classList.toggle('open'); links.classList.toggle('open'); });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); links.classList.remove('open'); }));
 
   // Scroll reveal
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: .15 });
-  document.querySelectorAll('.reveal:not(.visible)').forEach(el => io.observe(el));
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} }), { threshold:.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // Subtle hero parallax
+  // Hero parallax
   const heroImg = document.getElementById('heroImg');
-  addEventListener('scroll', () => {
-    const y = scrollY;
-    if (y < innerHeight) heroImg.style.transform = `scale(1.08) translateY(${y * .12}px)`;
-  }, {passive:true});
+  addEventListener('scroll', () => { const y = scrollY; if (y < innerHeight) heroImg.style.transform = `scale(1.06) translateY(${y*.1}px)`; }, {passive:true});
 
-  // Email capture (front-end only — hook up to Mailchimp/Klaviyo/Formspree later)
-  const form = document.getElementById('notifyForm');
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    form.style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => q.addEventListener('click', () => {
+    const item = q.parentElement, a = q.nextElementSibling, open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = null; });
+    if (!open){ item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+  }));
+
+  // AJAX form submit helper (keeps users on-site with a clean success state)
+  function ajaxForm(form, onOk){
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type=submit]'); const label = btn ? btn.textContent : '';
+      if (btn){ btn.textContent = 'Sending…'; btn.disabled = true; }
+      try {
+        const res = await fetch(form.action, { method:'POST', body:new FormData(form), headers:{ 'Accept':'application/json' } });
+        if (res.ok) { onOk(); } else { throw new Error(); }
+      } catch(err) {
+        if (btn){ btn.textContent = label; btn.disabled = false; }
+        alert('Something went wrong — please email elvtdgear@gmail.com directly.');
+      }
+    });
+  }
+  ajaxForm(document.getElementById('reserveForm'), () => {
+    document.getElementById('reserveForm').style.display = 'none';
+    document.getElementById('reserveSuccess').classList.add('show');
+  });
+  ajaxForm(document.getElementById('newsForm'), () => {
+    document.getElementById('newsForm').style.display = 'none';
+    document.getElementById('newsSuccess').style.display = 'block';
   });
 </script>
 </body>
